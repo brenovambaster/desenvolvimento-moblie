@@ -23,7 +23,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<AddTodoEvent>(_onAddTodo);
     on<ToggleTodoEvent>(_onToggleTodo);
     on<DeleteTodoEvent>(_onDeleteTodo);
-    on<EditTodoEvent>(_onEditTodo); // Novo handler para o evento de edição
+    on<EditTodoEvent>(_onEditTodo);
   }
 
   Future<void> _onLoadTodos(
