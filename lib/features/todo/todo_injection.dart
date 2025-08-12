@@ -1,7 +1,8 @@
-import 'package:estudos/features/todo/data/datasources/implementations/mock.dart';
+// features/todo/todo_injection.dart
+import 'package:estudos/core/database/database_helper.dart';
+import 'package:estudos/features/todo/data/datasources/implementations/sqflite.dart';
 import 'package:estudos/features/todo/data/datasources/todo_remote_datasource.dart';
 import 'package:estudos/features/todo/data/repositories/todo_repository_impl.dart';
-
 import 'package:estudos/features/todo/domain/repositories/todo_repository.dart';
 import 'package:estudos/features/todo/domain/usecases/add_todo.dart';
 import 'package:estudos/features/todo/domain/usecases/delete_todo.dart';
@@ -11,23 +12,24 @@ import 'package:estudos/features/todo/presentations/bloc/todo_bloc.dart';
 
 class TodoInjection {
   static TodoBloc provideTodoBloc() {
-    // 1. Instância do DataSource
-    // Escolha a implementação do DataSource (Mock ou API)
-    final TodoRemoteDataSource remoteDataSource = TodoRemoteDataSourceMock();
+    // Instância única do gerenciador de banco de dados
+    final databaseHelper = DatabaseHelper.instance;
 
-    // 2. Instância do Repository
-    // Injeta o DataSource no Repository
+    // O DataSource recebe o DatabaseHelper
+    final TodoRemoteDataSource remoteDataSource = TodoRemoteDataSourceSqflite(
+      databaseHelper: databaseHelper,
+    );
+
+    // O Repositório recebe o DataSource
     final TodoRepository repository = TodoRepositoryImpl(remoteDataSource);
 
-    // 3. Instância dos Usecases
-    // Injeta o Repository em cada UseCase
+    // Os Usecases recebem o Repositório
     final getAllTodosUseCase = GetAllTodosUseCase(repository);
     final addTodoUseCase = AddTodoUseCase(repository);
     final updateTodoUseCase = UpdateTodoUseCase(repository);
     final deleteTodoUseCase = DeleteTodoUseCase(repository);
 
-    // 4. Instância do BLoC
-    // Injeta todos os Usecases no BLoC
+    // O BLoC recebe todos os Usecases
     final todoBloc = TodoBloc(
       getAllTodosUseCase: getAllTodosUseCase,
       addTodoUseCase: addTodoUseCase,

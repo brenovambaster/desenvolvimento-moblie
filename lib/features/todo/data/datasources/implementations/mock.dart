@@ -47,4 +47,11 @@ class TodoRemoteDataSourceMock implements TodoRemoteDataSource {
       _todos.removeWhere((todo) => todo.id == id);
     });
   }
+
+  @override
+  Future<void> clearAllTodos() {
+    return _simulateDelay(() async {
+      _todos.clear();
+    });
+  }
 }

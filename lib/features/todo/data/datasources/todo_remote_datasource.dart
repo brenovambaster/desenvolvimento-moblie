@@ -8,4 +8,6 @@ abstract class TodoRemoteDataSource {
   Future<void> updateTodo(TodoModel todo);
 
   Future<void> deleteTodo(int id);
+
+  Future<void> clearAllTodos();
 }

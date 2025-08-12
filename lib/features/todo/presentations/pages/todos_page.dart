@@ -9,8 +9,6 @@ class TodosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // O BlocProvider envolve toda a página para que todos os widgets
-    // internos (incluindo o FloatingActionButton) tenham acesso ao BLoC.
     return BlocProvider(
       create: (_) => TodoInjection.provideTodoBloc()..add(LoadTodosEvent()),
       child: const TodosView(),

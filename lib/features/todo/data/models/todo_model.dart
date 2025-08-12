@@ -7,16 +7,27 @@ class TodoModel {
 
   TodoModel({required this.id, required this.title, required this.isCompleted});
 
-  factory TodoModel.fromJson(Map<String, dynamic> json) {
+  // Construtor para criar a partir de um Map (do sqflite)
+  factory TodoModel.fromMap(Map<String, dynamic> map) {
     return TodoModel(
-      id: json['id'],
-      title: json['title'],
-      isCompleted: json['isCompleted'],
+      id: map['id'],
+      title: map['title'],
+      isCompleted: map['isCompleted'] == 1,
     );
   }
 
-  Map<String, dynamic> toJson() {
+  // Método para converter para um Map. Usado para editar um TODO
+  Map<String, dynamic> toMap() {
     return {'id': id, 'title': title, 'isCompleted': isCompleted};
+  }
+
+  ///
+  /// Método para converter para um Map sem o ID (para enviar para a API)bO ID é
+  /// gerado automaticamente pelo banco de dados
+  ///
+
+  Map<String, dynamic> toMapWithoutId() {
+    return {'title': title, 'isCompleted': isCompleted ? 1 : 0};
   }
 
   // Método para converter o Data Model em uma Domain Entity

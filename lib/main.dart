@@ -1,3 +1,4 @@
+import 'package:estudos/core/database/database_helper.dart';
 import 'package:estudos/features/auth/presentations/bloc/auth_bloc.dart';
 import 'package:estudos/features/auth/presentations/bloc/auth_state.dart';
 import 'package:estudos/features/auth/presentations/pages/login_page.dart';

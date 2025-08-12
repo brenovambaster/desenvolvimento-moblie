@@ -1,18 +1,17 @@
+import 'package:equatable/equatable.dart';
 
-class TodoEntity {
+class TodoEntity extends Equatable {
   final int id;
   final String title;
   final bool isCompleted;
 
-  TodoEntity({
+  const TodoEntity({
     required this.id,
     required this.title,
     required this.isCompleted,
   });
 
   // Este método permite criar uma nova instância com apenas alguns atributos modificados
-  // Segue o princípio da imutabilidade para garantir que os objetos não sejam modificados
-  //
   TodoEntity copyWith({int? id, String? title, bool? isCompleted}) {
     return TodoEntity(
       id: id ?? this.id,

@@ -9,7 +9,7 @@ class UpdateTodoUseCase {
   Future<void> call(TodoEntity todo) async {
     // Exemplo de lógica de negócio:
     if (todo.id <= 0) {
-      throw Exception('ID do TODO inválido para atualização');
+      throw Exception('ID ${todo.id} do TODO inválido para atualização');
     }
     if (todo.title.trim().isEmpty) {
       throw Exception('O título do TODO não pode ser vazio');

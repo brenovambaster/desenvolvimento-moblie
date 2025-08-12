@@ -7,8 +7,6 @@ class GetAllTodosUseCase {
   GetAllTodosUseCase(this.repository);
 
   Future<List<TodoEntity>> call() async {
-    // Aqui poderia haver alguma lógica de negócio, como validações,
-    // mas neste caso, a operação é simples: apenas chamar o repositório.
     return await repository.getTodos();
   }
 }

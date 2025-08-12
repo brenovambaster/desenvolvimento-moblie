@@ -10,7 +10,6 @@ class TodoItem extends StatelessWidget {
   const TodoItem({super.key, required this.todo});
 
   void _showEditDialog(BuildContext context) {
-    // Inicializa o controlador com o título atual da tarefa
     final TextEditingController controller = TextEditingController(
       text: todo.title,
     );
@@ -33,12 +32,8 @@ class TodoItem extends StatelessWidget {
               onPressed: () {
                 final String newTitle = controller.text.trim();
                 if (newTitle.isNotEmpty) {
-                  // Cria uma nova TodoEntity com o título atualizado
                   final updatedTodo = todo.copyWith(title: newTitle);
-
-                  // Dispara o evento de edição para o BLoC
                   context.read<TodoBloc>().add(EditTodoEvent(updatedTodo));
-
                   Navigator.of(dialogContext).pop();
                 }
               },
@@ -75,7 +70,6 @@ class TodoItem extends StatelessWidget {
         onChanged: (bool? value) {
           context.read<TodoBloc>().add(ToggleTodoEvent(todo));
         },
-        // Botão de edição adicionado aqui
         secondary: IconButton(
           icon: const Icon(Icons.edit),
           onPressed: () => _showEditDialog(context),

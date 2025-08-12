@@ -6,12 +6,10 @@ class AddTodoUseCase {
 
   AddTodoUseCase(this.repository);
 
-  // O tipo de retorno foi alterado para Future<TodoEntity>
   Future<TodoEntity> call(TodoEntity todo) async {
     if (todo.title.trim().isEmpty) {
       throw Exception('O título do TODO não pode ser vazio');
     }
-    // Retorna o TodoEntity que vem do repositório
     return await repository.addTodo(todo);
   }
 }

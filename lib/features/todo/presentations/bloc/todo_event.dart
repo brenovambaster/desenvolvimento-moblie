@@ -6,8 +6,10 @@ abstract class TodoEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+// Evento para carregar a lista de tarefas
 class LoadTodosEvent extends TodoEvent {}
 
+// Evento para adicionar uma nova tarefa
 class AddTodoEvent extends TodoEvent {
   final TodoEntity todo;
 
@@ -17,6 +19,7 @@ class AddTodoEvent extends TodoEvent {
   List<Object?> get props => [todo];
 }
 
+// Evento para marcar/desmarcar uma tarefa como completa
 class ToggleTodoEvent extends TodoEvent {
   final TodoEntity todo;
 
@@ -26,6 +29,7 @@ class ToggleTodoEvent extends TodoEvent {
   List<Object?> get props => [todo];
 }
 
+// Evento para deletar uma tarefa
 class DeleteTodoEvent extends TodoEvent {
   final int id;
 
@@ -35,6 +39,7 @@ class DeleteTodoEvent extends TodoEvent {
   List<Object?> get props => [id];
 }
 
+// Evento para editar uma tarefa
 class EditTodoEvent extends TodoEvent {
   final TodoEntity todo;
 

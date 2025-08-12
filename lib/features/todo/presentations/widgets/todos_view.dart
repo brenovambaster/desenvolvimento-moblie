@@ -1,3 +1,4 @@
+import 'package:estudos/features/todo/domain/entities/todo_entity.dart';
 import 'package:estudos/features/todo/presentations/bloc/todo_bloc.dart';
 import 'package:estudos/features/todo/presentations/bloc/todo_state.dart';
 import 'package:estudos/features/todo/presentations/widgets/add_todo_button.dart';
@@ -12,7 +13,6 @@ class TodosView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Minhas Tarefas')),
-      // O body do Scaffold
       body: BlocConsumer<TodoBloc, TodoState>(
         listener: (context, state) {
           if (state is TodoError) {
