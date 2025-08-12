@@ -1,4 +1,3 @@
-import 'package:estudos/features/todo/domain/entities/todo_entity.dart';
 import 'package:estudos/features/todo/presentations/bloc/todo_bloc.dart';
 import 'package:estudos/features/todo/presentations/bloc/todo_state.dart';
 import 'package:estudos/features/todo/presentations/widgets/add_todo_button.dart';
